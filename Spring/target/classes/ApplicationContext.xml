@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context 
+           http://www.springframework.org/schema/context/spring-context.xsd"
+           >
+
+
+
+
+	<context:property-placeholder
+		location="classpath:car.propertices" />
+
+	<!-- bean definitions here  -->
+	<bean id="Bmw" class="com.gvp.orm.Spring.Bmw">
+	</bean>
+	<bean id="Nano" class="com.gvp.orm.Spring.Nano">
+	</bean>
+	<bean id="Bmw1" class="com.gvp.orm.Spring.Bmw1">
+		<constructor-arg ref="Engine">
+		</constructor-arg>
+	</bean>
+	<bean id="Nano1" class="com.gvp.orm.Spring.Nano1">
+		<constructor-arg ref="Engine">
+		</constructor-arg>
+	</bean>
+	<bean id="Audi" class="com.gvp.orm.Spring.Audi" init-method="myStartup" destroy-method="myClosing" >
+		<property name="engine" ref="Engine"></property>
+		<property name="color" value="${color}"></property>
+		<property name="price" value="${price}"></property>
+	</bean>
+	<bean id="Engine" class="com.gvp.orm.Spring.RocketEngine">
+	</bean>
+
+
+
+</beans>
