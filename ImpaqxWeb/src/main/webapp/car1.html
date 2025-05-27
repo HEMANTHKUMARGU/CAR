@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Car Information</title>
+</head>
+<body>
+	<h2>Car Information</h2>
+	<table id="cartable" border="1">
+		<tr>
+			<th>KEY</th>
+			<th>VALUE</th>
+		</tr>
+	</table>
+	<script>
+		function loadCarData() {
+			const carname = document.getElementById("carname").value;
+			const whichcar = document.getElementById("whichcar").value;
+			
+			fetch('FirstS?whichcar=${whichcar}&carname=${carname}')
+			.then(response => response.json())
+			.then(data=>{
+				const table=document.getElementById("carTable");
+				table.innerHTML="<tr><th>KEY</th><th>VALUE</th></tr>";
+				for(const key in data)
+					{
+					const row =table.insertRow();
+					row.insertCell(0).innerText=key;
+					row.insertCell(1).innerText=data[key];
+					
+					}
+				
+			})
+			.catch(error =>{
+				alert("Error fetching data. check console.");
+				console.error("Fetch error:",error);
+			})
+
+		}
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Queryc=select charecter from car where carname="{carname}"
+Querye=select engine from car where carname="{carname}"
+Queryb=select baseverent from car where carname="{carname}"
+Queryt=select topverent from car where carname="{carname}"
+Querya=select automatic from car where carname="{carname}"
